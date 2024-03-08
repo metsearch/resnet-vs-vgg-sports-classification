@@ -62,7 +62,7 @@ def learn(path2data, path2models, arch, bt_size, num_epochs, path2metrics):
     
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')        
     
-    num_classes = np.unique(train_dataset.img_labels.iloc[:, 1]).shape[0]
+    num_classes = len(np.unique(train_dataset.labels))
     logger.info(f'Number of classes: {num_classes}') 
     
     if arch == 'resnet':
@@ -92,7 +92,7 @@ def predict(path2models, bt_size, arch):
     test_loader = DataLoader(test_dataset, batch_size=bt_size, shuffle=True)
     
     model.eval()
-    class_names = {0: 'Cricket', 1: 'Wrestling', 2: 'Tennis', 3: 'Badminton', 4: 'Soccer', 5: 'Swimming', 6: 'Karate'}
+    class_names = {0: 'Badminton', 1: 'Cricket', 2: 'Karate', 3: 'Soccer', 4: 'Swimming', 5: 'Tennis', 6: 'Wrestling'}
     if arch == 'resnet':
         images, predictions = resnet_inference(test_loader, model, device, class_names)
     else:

@@ -1,8 +1,8 @@
 import os
 
 import pandas as pd
-from torch.utils.data import Dataset
 from PIL import Image
+from torch.utils.data import Dataset
 
 from utilities.utils import *
 
@@ -18,6 +18,7 @@ class CustomImageDataset(Dataset):
             self.image_ids, self.labels = df['image_ID'], df['label']
             classes = [label for label in np.unique(self.labels)]
             self.class_names = {label: idx for idx, label in enumerate(classes)}
+            print(self.class_names)
         else:
             self.image_ids = df['image_ID']
 
@@ -28,11 +29,14 @@ class CustomImageDataset(Dataset):
         img_path = os.path.join(self.data_source, self.data_type, self.image_ids[idx])
         image = Image.open(img_path).convert('RGB')
         if self.transform:
-                image = self.transform(image)
-        if self.target_transform:
-            label = self.target_transform(label)
-        
-        return image, label if self.data_type == 'train' else image
+            image = self.transform(image)
+        if self.data_type == 'train':
+            label = self.labels[idx]
+            if self.target_transform:
+                label = self.target_transform(label)
+            return image, self.class_names[label]
+        else:
+            return image
         
 
 if __name__ == "__main__":

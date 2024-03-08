@@ -14,7 +14,7 @@ def resnet_inference(test_loader, model, device, class_names):
             X = X.to(device)
             P = model(X)
             predictions.extend(torch.argmax(P, dim=1).cpu().numpy())
-            images.extend(X.cpu().numpy())
+            images.extend(X.cpu())
 
     model.train()
     predictions = [class_names[pred] for pred in predictions]
@@ -29,10 +29,9 @@ def vgg_inference(test_loader, model, device, class_names):
             X = Variable(X)
             X = X.to(device)
             P = model(X)
-            print(torch.argmax(P, dim=1).cpu().numpy())
-            predictions.extend(class_names[torch.argmax(P, dim=1).cpu().numpy()])
-            images.extend(X.cpu().numpy())
-
+            predictions.extend(torch.argmax(P, dim=1).cpu().numpy())
+            images.extend(X.cpu())
+            
     model.train()
     predictions = [class_names[pred] for pred in predictions]
     return images, predictions
