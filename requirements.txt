@@ -5,6 +5,7 @@ filelock==3.13.1
 fonttools==4.49.0
 fsspec==2024.2.0
 Jinja2==3.1.3
+joblib==1.3.2
 kiwisolver==1.4.5
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
@@ -33,8 +34,12 @@ pyparsing==3.1.2
 python-dateutil==2.9.0.post0
 pytz==2024.1
 rich==13.7.1
+scikit-learn==1.4.1.post1
+scipy==1.12.0
+seaborn==0.13.2
 six==1.16.0
 sympy==1.12
+threadpoolctl==3.3.0
 torch==2.2.1
 torchvision==0.17.1
 triton==2.2.0
