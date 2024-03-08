@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project focuses on training and inference for image classification using the sports dataset available <a href="https://www.kaggle.com/datasets/sidharkal/sports-image-classification">here</a>. It provides functionality for training models (both Vgg16 and ResNet18) and conducting inference on test data. The project is organized into separate modules for learning and inference, with utility functions and command-line interface (CLI) options for customization.
+This project focuses on training and inference for image classification using the sports dataset available <a href="https://www.kaggle.com/datasets/sidharkal/sports-image-classification" target="blank">here</a>. It provides functionality for training models (both Vgg16 and ResNet18) and conducting inference on test data. The project is organized into separate modules for learning and inference, with utility functions and command-line interface (CLI) options for customization.
 
 
 <p align="center">
